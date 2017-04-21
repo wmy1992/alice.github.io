@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>胡思乱想的Alice</title>
+  <title>javascript的执行上下文—作用链、闭包 | 胡思乱想的Alice</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="js作用域：函数作用域、全局作用域作用域链：由当前环境与上层环境的一系列变量对象组成，它保证了当前执行环境对符合访问权限的变量和函数的有序访问。举个例子：12345function demo()&amp;#123;	var a=10;&amp;#125;demo();console.log(a); 解析调用demo时开始创建demo的上下文执行环境，创建变量对象VO={a:undefined}，创建作用域链：[V">
 <meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="胡思乱想的Alice">
+<meta property="og:title" content="javascript的执行上下文—作用链、闭包">
 <meta property="og:url" content="http://yoursite.com/2017/04/21/javascript的执行上下文—作用域链 闭包/index.html">
 <meta property="og:site_name" content="胡思乱想的Alice">
 <meta property="og:description" content="js作用域：函数作用域、全局作用域作用域链：由当前环境与上层环境的一系列变量对象组成，它保证了当前执行环境对符合访问权限的变量和函数的有序访问。举个例子：12345function demo()&amp;#123;	var a=10;&amp;#125;demo();console.log(a); 解析调用demo时开始创建demo的上下文执行环境，创建变量对象VO={a:undefined}，创建作用域链：[V">
-<meta property="og:updated_time" content="2017-04-21T06:26:47.762Z">
+<meta property="og:updated_time" content="2017-04-21T06:31:23.447Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="胡思乱想的Alice">
+<meta name="twitter:title" content="javascript的执行上下文—作用链、闭包">
 <meta name="twitter:description" content="js作用域：函数作用域、全局作用域作用域链：由当前环境与上层环境的一系列变量对象组成，它保证了当前执行环境对符合访问权限的变量和函数的有序访问。举个例子：12345function demo()&amp;#123;	var a=10;&amp;#125;demo();console.log(a); 解析调用demo时开始创建demo的上下文执行环境，创建变量对象VO={a:undefined}，创建作用域链：[V">
   
     <link rel="alternate" href="/atom.xml" title="胡思乱想的Alice" type="application/atom+xml">
@@ -71,12 +71,22 @@
         <section id="main"><article id="post-javascript的执行上下文—作用域链 闭包" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/04/21/javascript的执行上下文—作用域链 闭包/" class="article-date">
-  <time datetime="2017-04-21T06:26:45.690Z" itemprop="datePublished">2017-04-21</time>
+  <time datetime="2017-04-21T06:18:56.000Z" itemprop="datePublished">2017-04-21</time>
 </a>
     
   </div>
   <div class="article-inner">
     
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      javascript的执行上下文—作用链、闭包
+    </h1>
+  
+
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
@@ -89,7 +99,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/04/21/javascript的执行上下文—作用域链 闭包/" data-id="cj1rgg4p50001csfbup6siu72" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/04/21/javascript的执行上下文—作用域链 闭包/" data-id="cj1rgk4m70001dofb0892roe5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -98,19 +108,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/04/21/javascript的执行上下文—创建变量对象/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/04/21/flex布局图解/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          javascript的执行上下文—创建变量对象
+          flex简介
         
       </div>
     </a>
   
   
-    <a href="/2017/04/21/flex布局图解/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/04/21/javascript的执行上下文—创建变量对象/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title"></div>
+      <div class="article-nav-title">javascript的执行上下文—创建变量对象</div>
     </a>
   
 </nav>
@@ -147,11 +157,11 @@
       <ul>
         
           <li>
-            <a href="/2017/04/21/flex布局图解/">(no title)</a>
+            <a href="/2017/04/21/flex布局图解/">flex简介</a>
           </li>
         
           <li>
-            <a href="/2017/04/21/javascript的执行上下文—作用域链 闭包/">(no title)</a>
+            <a href="/2017/04/21/javascript的执行上下文—作用域链 闭包/">javascript的执行上下文—作用链、闭包</a>
           </li>
         
           <li>
