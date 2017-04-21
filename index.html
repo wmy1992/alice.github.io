@@ -68,6 +68,103 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-canvas图像处理" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/21/canvas图像处理/" class="article-date">
+  <time datetime="2017-04-21T07:04:58.000Z" itemprop="datePublished">2017-04-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/21/canvas图像处理/">canvas图像处理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>canvas image</p>
+<p>对绘制出来的图形进行操作<br>drawImage(image,dx,dy)<br>draImage(image,dx,dy,dw,dh)<br>对原图像进行操作<br>drawImage(image,sx,sy,sw,sh,dx,dy,dw,dh)<br>image.onload=funciton(){}要等到图片被加载完</p>
+<p>离屏cavas<br>【应用：给图像加水印】</p>
+<p>获取图像像素<br>imageData=context.getImageData(x,y,w,h)<br>width|height||data</p>
+<p>context.putImageData(imageData,dx,dy,dirtyX,dirtyY,dirtyW,dirtyH)<br>dirtyX和dirtyY不会覆盖dx、dy，而会叠加<br>【应用：灰色滤镜 黑白滤镜 反色滤镜 马赛克】</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/04/21/canvas图像处理/" data-id="cj1rhsw5a0000t0fbcshe2r1x" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-canvas图形绘制" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/21/canvas图形绘制/" class="article-date">
+  <time datetime="2017-04-21T07:04:12.000Z" itemprop="datePublished">2017-04-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/21/canvas图形绘制/">canvas图形绘制</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>基于状态绘图 ,每次绘制都会检查所有状态</strong><br>context.beginPath()//全新的路径绘制<br>context.closePath()<br>beginPath和lineTo合用相当于moveTo<br>beginPath和closePath合用解决闭合处问题</p>
+<p>fillStyle() fill()<br>先描边后填充的话，填充会覆盖掉线条的一半<br>解决方法：先填充后描边</p>
+<p>context.rect（x,y,width,height）<br>context.fillRect(x,y,width,height)<br>context.strokeRect(x,y,width,height)<br>context.clearRect(x,y,width,height)//清空</p>
+<p>context后绘制的图形会覆盖前面图形</p>
+<p><strong>线条的属性：</strong><br>lineCap:butt(default) square[多出方头]round[多出一半的圆头]<br>只能用于开头和结尾，不能用于衔接处<br>lineJoin:miter(default)  bevel[斜接] round[圆角]<br>miterLimit：10 ，超过即用bevel</p>
+<p><strong>图形变化的机制</strong><br>图形变化会叠加，如使用两次translate（100,100）translate（300,300）最后一次translate会叠加至400,400<br>解决方法：context.save();context.restore()返回save之前的状态<br>rotate(x,y)<br>scale（deg）//不仅仅放大图标的大小，也会缩放坐标、边框<br>translate(sx,sy)//改变基坐标</p>
+<p>transform(a,b,c,d,e,f)变换矩阵[继续学习]<br>setTransform()</p>
+<p><strong>填充或描边类型</strong><br>fillStyle/strokeStyle:gradient pattern color</p>
+<p>线性渐变：渐变线可以水平、垂直 、倾斜<br>var grd=context.createLinearGradient(xstart,ystart,xend,yend)<br>grd.addColorStop(floatend,color)<br>如果渐变线只指定了canvas的一部分区域，则最前面的渐变色或最后边的渐变色补充不足的区域<br>radial gradient<br>var grd=context.createRadialGradient(x0,y0,r0,x1,y1,r1)</p>
+<p>图片填充createPattern<br>createPattern(img/canvas/video,repeat-style)<br>no-repeat repeat-y repeat-x repeat<br>【填充canvas】</p>
+<p><strong>曲线的绘制：</strong><br>arc<br>context.arc(centerx,centery,radius,startAngle,endingAngle,anticlockwise=false)<br>不论逆时针还是顺时针，angle是保持不变的<br>【画带弧线的圆角矩形】【画2048】</p>
+<p>arcTo(x1,y1,x2,y2,radius)<br>(x0,y0)由moveTo或lineTo决定<br>【画月亮】</p>
+<p><strong>字体样式：</strong><br>context.font=”bold 40px Arial”<br>context.font=”20px sans-serif”//默认<br>font-style:normal italic/斜体字/ oblique/字体角度倾斜/<br>font-variant:normal small-caps/小型大写字母/<br>font-weight:lighter normal bold bolder<br>font-size:20px 2em 150%<br>font-family: @font-face<br>文本对齐<br>context.textAlign=left|center|right<br>context.textBaseline=top|middle|bottom|alphabetic(基于拉丁)|ideographic(方块文字)|hanging(印度语)</p>
+<p><strong>文本的度量：</strong><br>context.measureText(string).width//根据设置的font属性计算文本宽度<br>【填词系统】<br>context.fillText(string,x,y,[maxlen])<br>context.strokeText(string,x,y,[maxlen])</p>
+<p><strong>阴影绘制</strong><br>context.shadowColor<br>context.shadowOffsetX<br>context.shadowOffsetY<br>context.shadowBlur//控制边缘模糊程度</p>
+<p>global【碰撞的小球】<br>globalAlpha=1(default)//全局透明度<br>globalCompositeOperation//图形的压盖 情况，默认后绘制的图形压盖前面绘制的图形<br>=”source-over”(default)|destination-over<br>source-over|source-atop|source-in|source-out<br>destination-over|destination-atop|destination-in|destination-out<br>lighter//重叠部分冲计算颜色<br>copy<br>xor</p>
+<p>剪辑区域【探照灯】<br>context.clip()//剪切自定义的区域为绘制环境</p>
+<p>非零环绕原则【剪纸效果】<br>判断内侧和外侧</p>
+<p>canvas与浏览器的兼容<br>用户提示文字<br>canvas.elipse<br>explorecanvas老式浏览器托管<br><!--[if IE]><script type="text/javascript" src="../excanvas.js"></script><![endif]--></p>
+<p>—未完待更—-</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/04/21/canvas图形绘制/" data-id="cj1rhsw5u0002t0fbz8wiystd" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-javascript的执行上下文—作用链、闭包" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/04/21/javascript的执行上下文—作用链、闭包/" class="article-date">
@@ -99,7 +196,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/04/21/javascript的执行上下文—作用链、闭包/" data-id="cj1rgv6y90001ckfbn0izba5o" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/04/21/javascript的执行上下文—作用链、闭包/" data-id="cj1rhsw6a0005t0fbh40jyde0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -139,7 +236,48 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/04/21/flex布局图解/" data-id="cj1rgv6xu0000ckfbwlt776dj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/04/21/flex布局图解/" data-id="cj1rhsw5e0001t0fbvmkejpt3" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-javascript的执行上下文—作用域链 闭包" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/21/javascript的执行上下文—作用域链 闭包/" class="article-date">
+  <time datetime="2017-04-21T06:18:56.000Z" itemprop="datePublished">2017-04-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/21/javascript的执行上下文—作用域链 闭包/">javascript的执行上下文—作用链、闭包</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>js作用域：函数作用域、全局作用域<br>作用域链：由当前环境与上层环境的一系列变量对象组成，它保证了当前执行环境对符合访问权限的变量和函数的有序访问。<br>举个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function demo()&#123;</div><div class="line">	var a=10;</div><div class="line">&#125;</div><div class="line">demo();</div><div class="line">console.log(a);</div></pre></td></tr></table></figure></p>
+<p><strong>解析</strong><br>调用demo时开始创建demo的上下文执行环境，创建变量对象VO={a:undefined}，创建作用域链：[VO(demo),VO(global)]。<br>执行demo上下文阶段，变量a赋值为10,执行结束，demo函数出栈，上下文被销毁。全局作用域中没有a对象，访问抛错。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">VM80:5 Uncaught ReferenceError: a is not defined</div><div class="line">    at &lt;anonymous&gt;:5:13</div></pre></td></tr></table></figure></p>
+<p><strong>闭包中的作用域</strong><br>闭包：闭包是指有权访问另一个函数作用域中的变量函数；<br>闭包的功能：可以访问外部函数，维持函数作用域。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function demo2()&#123;</div><div class="line">	var a=10;</div><div class="line">	function foo()&#123;</div><div class="line">		return a;</div><div class="line">	&#125;</div><div class="line">	return foo;</div><div class="line">&#125;</div><div class="line">console.log(demo2()());</div></pre></td></tr></table></figure></p>
+<p>demo2()创建demo的上下文，创建变量对象VO={a:undefined,foo:&lt;&gt;},创建作用域链[VO(demo2) VO(global)];执行阶段a赋值10，返回foo函数。<br>demo()()即foo(),foo的作用域链为：[VO(foo),VO(demo2),VO(global)]，foo函数可以访问函数demo2中的变量，也可以访问全局变量。foo函数执行return a；</p>
+<p>demo2()执行后返回foo,此时demo已经执行结束了，其上下文应该被销毁，a应该被销毁。但是因为return foo的存在，导致foo函数的执行上下文被保留，而函数demo2中的执行上下文中包含了foo，所以demo的执行上下文不能被销毁，可以说闭包foo维持了demo2的作用域，a变量也就可以继续访问了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/04/21/javascript的执行上下文—作用域链 闭包/" data-id="cj1rhsw5u0003t0fbez8v4m2m" class="article-share-link">Share</a>
       
       
     </footer>
@@ -194,7 +332,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/04/21/javascript的执行上下文—创建变量对象/" data-id="cj1rgv6yo0003ckfbaxp718qp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/04/21/javascript的执行上下文—创建变量对象/" data-id="cj1rhsw6a0006t0fboqekcxcy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -231,7 +369,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/04/16/test-post/" data-id="cj1rgv6yp0004ckfbe92rw5nm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/04/16/test-post/" data-id="cj1rhsw6p0007t0fb7ugqkvvi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -276,7 +414,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/04/16/hello-world/" data-id="cj1rgv6yg0002ckfbi9ur3dse" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/04/16/hello-world/" data-id="cj1rhsw5u0004t0fb9h6lc3cs" class="article-share-link">Share</a>
       
       
     </footer>
@@ -316,6 +454,14 @@
       <ul>
         
           <li>
+            <a href="/2017/04/21/canvas图像处理/">canvas图像处理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/21/canvas图形绘制/">canvas图形绘制</a>
+          </li>
+        
+          <li>
             <a href="/2017/04/21/javascript的执行上下文—作用链、闭包/">javascript的执行上下文—作用链、闭包</a>
           </li>
         
@@ -324,15 +470,7 @@
           </li>
         
           <li>
-            <a href="/2017/04/21/javascript的执行上下文—创建变量对象/">javascript的执行上下文—创建变量对象</a>
-          </li>
-        
-          <li>
-            <a href="/2017/04/16/test-post/">test-post</a>
-          </li>
-        
-          <li>
-            <a href="/2017/04/16/hello-world/">Hello World</a>
+            <a href="/2017/04/21/javascript的执行上下文—作用域链 闭包/">javascript的执行上下文—作用链、闭包</a>
           </li>
         
       </ul>

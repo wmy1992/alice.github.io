@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>canvas图形绘制 | 胡思乱想的Alice</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="基于状态绘图 ,每次绘制都会检查所有状态context.beginPath()//全新的路径绘制context.closePath()beginPath和lineTo合用相当于moveTobeginPath和closePath合用解决闭合处问题 fillStyle() fill()先描边后填充的话，填充会覆盖掉线条的一半解决方法：先填充后描边 context.rect（x,y,width,heig">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="canvas图形绘制">
+<meta property="og:url" content="http://yoursite.com/2017/04/21/canvas图形绘制/index.html">
+<meta property="og:site_name" content="胡思乱想的Alice">
+<meta property="og:description" content="基于状态绘图 ,每次绘制都会检查所有状态context.beginPath()//全新的路径绘制context.closePath()beginPath和lineTo合用相当于moveTobeginPath和closePath合用解决闭合处问题 fillStyle() fill()先描边后填充的话，填充会覆盖掉线条的一半解决方法：先填充后描边 context.rect（x,y,width,heig">
+<meta property="og:updated_time" content="2017-04-21T07:05:34.335Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="canvas图形绘制">
+<meta name="twitter:description" content="基于状态绘图 ,每次绘制都会检查所有状态context.beginPath()//全新的路径绘制context.closePath()beginPath和lineTo合用相当于moveTobeginPath和closePath合用解决闭合处问题 fillStyle() fill()先描边后填充的话，填充会覆盖掉线条的一半解决方法：先填充后描边 context.rect（x,y,width,heig">
+  
+    <link rel="alternate" href="/atom.xml" title="胡思乱想的Alice" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">胡思乱想的Alice</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">一本正经学前端</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-canvas图形绘制" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/21/canvas图形绘制/" class="article-date">
+  <time datetime="2017-04-21T07:04:12.000Z" itemprop="datePublished">2017-04-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      canvas图形绘制
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>基于状态绘图 ,每次绘制都会检查所有状态</strong><br>context.beginPath()//全新的路径绘制<br>context.closePath()<br>beginPath和lineTo合用相当于moveTo<br>beginPath和closePath合用解决闭合处问题</p>
+<p>fillStyle() fill()<br>先描边后填充的话，填充会覆盖掉线条的一半<br>解决方法：先填充后描边</p>
+<p>context.rect（x,y,width,height）<br>context.fillRect(x,y,width,height)<br>context.strokeRect(x,y,width,height)<br>context.clearRect(x,y,width,height)//清空</p>
+<p>context后绘制的图形会覆盖前面图形</p>
+<p><strong>线条的属性：</strong><br>lineCap:butt(default) square[多出方头]round[多出一半的圆头]<br>只能用于开头和结尾，不能用于衔接处<br>lineJoin:miter(default)  bevel[斜接] round[圆角]<br>miterLimit：10 ，超过即用bevel</p>
+<p><strong>图形变化的机制</strong><br>图形变化会叠加，如使用两次translate（100,100）translate（300,300）最后一次translate会叠加至400,400<br>解决方法：context.save();context.restore()返回save之前的状态<br>rotate(x,y)<br>scale（deg）//不仅仅放大图标的大小，也会缩放坐标、边框<br>translate(sx,sy)//改变基坐标</p>
+<p>transform(a,b,c,d,e,f)变换矩阵[继续学习]<br>setTransform()</p>
+<p><strong>填充或描边类型</strong><br>fillStyle/strokeStyle:gradient pattern color</p>
+<p>线性渐变：渐变线可以水平、垂直 、倾斜<br>var grd=context.createLinearGradient(xstart,ystart,xend,yend)<br>grd.addColorStop(floatend,color)<br>如果渐变线只指定了canvas的一部分区域，则最前面的渐变色或最后边的渐变色补充不足的区域<br>radial gradient<br>var grd=context.createRadialGradient(x0,y0,r0,x1,y1,r1)</p>
+<p>图片填充createPattern<br>createPattern(img/canvas/video,repeat-style)<br>no-repeat repeat-y repeat-x repeat<br>【填充canvas】</p>
+<p><strong>曲线的绘制：</strong><br>arc<br>context.arc(centerx,centery,radius,startAngle,endingAngle,anticlockwise=false)<br>不论逆时针还是顺时针，angle是保持不变的<br>【画带弧线的圆角矩形】【画2048】</p>
+<p>arcTo(x1,y1,x2,y2,radius)<br>(x0,y0)由moveTo或lineTo决定<br>【画月亮】</p>
+<p><strong>字体样式：</strong><br>context.font=”bold 40px Arial”<br>context.font=”20px sans-serif”//默认<br>font-style:normal italic/斜体字/ oblique/字体角度倾斜/<br>font-variant:normal small-caps/小型大写字母/<br>font-weight:lighter normal bold bolder<br>font-size:20px 2em 150%<br>font-family: @font-face<br>文本对齐<br>context.textAlign=left|center|right<br>context.textBaseline=top|middle|bottom|alphabetic(基于拉丁)|ideographic(方块文字)|hanging(印度语)</p>
+<p><strong>文本的度量：</strong><br>context.measureText(string).width//根据设置的font属性计算文本宽度<br>【填词系统】<br>context.fillText(string,x,y,[maxlen])<br>context.strokeText(string,x,y,[maxlen])</p>
+<p><strong>阴影绘制</strong><br>context.shadowColor<br>context.shadowOffsetX<br>context.shadowOffsetY<br>context.shadowBlur//控制边缘模糊程度</p>
+<p>global【碰撞的小球】<br>globalAlpha=1(default)//全局透明度<br>globalCompositeOperation//图形的压盖 情况，默认后绘制的图形压盖前面绘制的图形<br>=”source-over”(default)|destination-over<br>source-over|source-atop|source-in|source-out<br>destination-over|destination-atop|destination-in|destination-out<br>lighter//重叠部分冲计算颜色<br>copy<br>xor</p>
+<p>剪辑区域【探照灯】<br>context.clip()//剪切自定义的区域为绘制环境</p>
+<p>非零环绕原则【剪纸效果】<br>判断内侧和外侧</p>
+<p>canvas与浏览器的兼容<br>用户提示文字<br>canvas.elipse<br>explorecanvas老式浏览器托管<br><!--[if IE]><script type="text/javascript" src="../excanvas.js"></script><![endif]--></p>
+<p>—未完待更—-</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/04/21/canvas图形绘制/" data-id="cj1rhsw5u0002t0fbz8wiystd" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/21/javascript的执行上下文—作用链、闭包/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          javascript的执行上下文—作用链、闭包
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/04/21/canvas图像处理/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">canvas图像处理</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/21/canvas图像处理/">canvas图像处理</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/21/canvas图形绘制/">canvas图形绘制</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/21/javascript的执行上下文—作用链、闭包/">javascript的执行上下文—作用链、闭包</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/21/flex布局图解/">flex布局图解</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/21/javascript的执行上下文—作用域链 闭包/">javascript的执行上下文—作用链、闭包</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 AliceMeng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
