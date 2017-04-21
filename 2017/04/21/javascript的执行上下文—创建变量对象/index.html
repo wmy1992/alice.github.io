@@ -3,17 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>胡思乱想的Alice</title>
+  <title>javascript的执行上下文—创建变量对象 | 胡思乱想的Alice</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="路漫漫，别放弃">
-<meta property="og:type" content="website">
-<meta property="og:title" content="胡思乱想的Alice">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="执行上下文的创建时机：当调用一个函数时（激活），一个新的执行上下文就会被创建。执行上下文的生命周期一个执行上下文的生命周期可以分为两个阶段，创建阶段和执行阶段。 创建阶段： 执行阶段：  注意：在检查变量声明阶段，如果遇到同名的变量名时，则直接跳过。因为同名的变量名可能是在检查函数声明时创建的，跳过是为了避免覆盖掉已声明的函数。  举个小例子，看一下上下文从创建到执行的过程。12345678910">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript的执行上下文—创建变量对象">
+<meta property="og:url" content="http://yoursite.com/2017/04/21/javascript的执行上下文—创建变量对象/index.html">
 <meta property="og:site_name" content="胡思乱想的Alice">
-<meta property="og:description" content="路漫漫，别放弃">
+<meta property="og:description" content="执行上下文的创建时机：当调用一个函数时（激活），一个新的执行上下文就会被创建。执行上下文的生命周期一个执行上下文的生命周期可以分为两个阶段，创建阶段和执行阶段。 创建阶段： 执行阶段：  注意：在检查变量声明阶段，如果遇到同名的变量名时，则直接跳过。因为同名的变量名可能是在检查函数声明时创建的，跳过是为了避免覆盖掉已声明的函数。  举个小例子，看一下上下文从创建到执行的过程。12345678910">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/867750-b9e65b72aff72a9d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/867750-af0af18ea09c4520.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-04-21T06:20:31.184Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="胡思乱想的Alice">
-<meta name="twitter:description" content="路漫漫，别放弃">
+<meta name="twitter:title" content="javascript的执行上下文—创建变量对象">
+<meta name="twitter:description" content="执行上下文的创建时机：当调用一个函数时（激活），一个新的执行上下文就会被创建。执行上下文的生命周期一个执行上下文的生命周期可以分为两个阶段，创建阶段和执行阶段。 创建阶段： 执行阶段：  注意：在检查变量声明阶段，如果遇到同名的变量名时，则直接跳过。因为同名的变量名可能是在检查函数声明时创建的，跳过是为了避免覆盖掉已声明的函数。  举个小例子，看一下上下文从创建到执行的过程。12345678910">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/867750-b9e65b72aff72a9d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternate" href="/atom.xml" title="胡思乱想的Alice" type="application/atom+xml">
   
@@ -66,9 +71,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-javascript的执行上下文—创建变量对象" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-javascript的执行上下文—创建变量对象" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/04/21/javascript的执行上下文—创建变量对象/" class="article-date">
   <time datetime="2017-04-21T06:18:56.000Z" itemprop="datePublished">2017-04-21</time>
@@ -81,8 +84,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/21/javascript的执行上下文—创建变量对象/">javascript的执行上下文—创建变量对象</a>
+    <h1 class="article-title" itemprop="name">
+      javascript的执行上下文—创建变量对象
     </h1>
   
 
@@ -119,92 +122,23 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-test-post" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/16/test-post/" class="article-date">
-  <time datetime="2017-04-16T10:24:11.000Z" itemprop="datePublished">2017-04-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <a href="/2017/04/16/test-post/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/16/test-post/">test-post</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>testname</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/04/16/test-post/" data-id="cj1rg6aht0001u8fb97gdylog" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/16/hello-world/" class="article-date">
-  <time datetime="2017-04-16T10:17:15.354Z" itemprop="datePublished">2017-04-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+          test-post
         
+      </div>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/16/hello-world/">Hello World</a>
-    </h1>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/04/16/hello-world/" data-id="cj1rg6ahz0002u8fbweok07s4" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
 
 </section>
         
